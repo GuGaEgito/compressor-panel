@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compressor Panel</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+  <header class="hmi-top">
+    <div class="title" id="title">Início</div>
+    <nav class="icons">
+      <span class="ico"></span>
+      <span class="ico"></span>
+      <span class="ico"></span>
+      <span class="ico"></span>
+      <span class="ico"></span>
+    </nav>
+  </header>
+
+  <main class="hmi-screen">
+    <section class="gauge-wrap">
+      <svg id="gauge" viewBox="-160 -140 320 220" width="100%" height="100%" aria-label="Gauge de pressão">
+        <defs>
+          <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.35" />
+          </filter>
+        </defs>
+        <path id="arcLeft"  class="zone zone-warn"   d="" />
+        <path id="arcMid"   class="zone zone-ok"     d="" />
+        <path id="arcRight" class="zone zone-warn"   d="" />
+        <g id="needle" filter="url(#softShadow)">
+          <polygon points="0,-6 90,0 0,6" class="needle" />
+          <circle r="10" class="needle-hub" />
+        </g>
+        <text id="lblMin" class="scale" x="-120" y="50">min</text>
+        <text id="lblMax" class="scale" x="120" y="50" text-anchor="end">max</text>
+      </svg>
+      <div class="center-read">
+        <div><span id="mainVal">–</span> <span id="unit">bar</span></div>
+      </div>
+    </section>
+
+    <section class="side-boxes">
+      <div class="box">
+        <div class="box-title">% Capacid</div>
+        <div class="box-value"><span id="capacity">–</span> %</div>
+      </div>
+      <div class="box">
+        <div class="box-title">H</div>
+        <div class="box-value"><span id="hours">–</span> H</div>
+      </div>
+      <div class="box">
+        <div class="box-title">°C</div>
+        <div class="box-value"><span id="temp">–</span> °C</div>
+      </div>
+    </section>
+
+    <section class="data-section">
+      <h3>📊 Leituras detalhadas</h3>
+      <table id="dataTable" class="data-table"></table>
+    </section>
+
+    <footer class="statusbar">
+      <div id="status">—</div>
+      <div class="right">Atualizado: <span id="ts">—</span></div>
+    </footer>
+  </main>
+
+  <script src="./uibuilderfe.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
